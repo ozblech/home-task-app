@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    platform: linux/amd64
+    image: mysql:5.7
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: exampleDb
+      MYSQL_USER: flaskapp
+      MYSQL_PASSWORD: db_password
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - backend
+
+  app:
+    build: .
+    container_name: my_app
+    depends_on:
+      - db
+    environment:
+      DB_HOST: "mysql_db"
+      BACKEND: "http://localhost:8080"
+      DB_USER: "flaskapp"
+      DB_PASS: "db_password"
+      DB_NAME: "exampleDb"
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

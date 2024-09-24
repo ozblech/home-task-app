@@ -1,0 +1,29 @@
+{
+    "TableDescription": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "LockID",
+                "AttributeType": "S"
+            }
+        ],
+        "TableName": "terraform-locks",
+        "KeySchema": [
+            {
+                "AttributeName": "LockID",
+                "KeyType": "HASH"
+            }
+        ],
+        "TableStatus": "CREATING",
+        "CreationDateTime": "2024-09-16T14:17:04.279000+03:00",
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 5,
+            "WriteCapacityUnits": 5
+        },
+        "TableSizeBytes": 0,
+        "ItemCount": 0,
+        "TableArn": "arn:aws:dynamodb:us-west-2:024848485658:table/terraform-locks",
+        "TableId": "d7c85cef-ab92-489a-a2bb-e8c837e51fa2",
+        "DeletionProtectionEnabled": false
+    }
+}
